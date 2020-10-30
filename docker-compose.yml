@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+
+  mysql:
+    container_name: mysql
+    image: mysql:8.0.21
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=root
+    healthcheck:
+      test: "mysqladmin ping -u root -p$${MYSQL_ROOT_PASSWORD}"
+      start_period: 30s
+
